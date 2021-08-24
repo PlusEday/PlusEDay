@@ -3,7 +3,7 @@ package org.eday.domain;
 import lombok.Data;
 
 @Data
-public class Auth {
+public class AuthVO {
 
 	private String email;
 	private String auth;
