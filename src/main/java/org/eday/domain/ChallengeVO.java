@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class ChallengeVO {
 	private String challenge_id;
-	private String member_id;
+	private String owner_id;
 	private Date regDate;
 	private Date startDate;
 	private Date finishDate;
