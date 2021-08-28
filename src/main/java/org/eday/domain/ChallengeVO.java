@@ -12,4 +12,6 @@ public class ChallengeVO {
 	private Date startDate;
 	private Date finishDate;
 	private String detail;
+	
+	private SubjectVO subjectVO;
 }
