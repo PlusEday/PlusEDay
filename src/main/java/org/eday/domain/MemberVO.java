@@ -16,4 +16,7 @@ public class MemberVO {
 	
 	private LevelVO level;
 	private List<FollowVO> followList;
+	
+	private String auth;
+	private List<AuthVO> authList;
 }
