@@ -27,15 +27,16 @@ public class DataSourceTests {
 	
 	@Setter(onMethod_ = {@Autowired})
 	private SqlSessionFactory sqlSessionFactory;
-	
-	@Test
-	public void testConnection(){
-		try(Connection con = dataSource.getConnection()){
-			log.info(con);
-		} catch(Exception e){
-			fail(e.getMessage());
-		}
-	}
+
+// DataSource를 이용한 Connection 테스트
+//	@Test
+//	public void testConnection(){
+//		try(Connection con = dataSource.getConnection()){
+//			log.info(con);
+//		} catch(Exception e){
+//			fail(e.getMessage());
+//		}
+//	}
 	
 	@Test
 	public void testMyBatis() {

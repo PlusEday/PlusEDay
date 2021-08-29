@@ -10,7 +10,7 @@ import lombok.Data;
 public class PostVO {
 
 	private String post_id;
-	private String content;
+	private String detail;
 	private Date regdate;
 	private List<Post_photoVO> photo;
 	private List<MemberVO> likedMember;
