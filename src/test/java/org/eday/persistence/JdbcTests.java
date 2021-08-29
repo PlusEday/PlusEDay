@@ -23,7 +23,7 @@ public class JdbcTests {
 	@Test
 	public void testConnection() {
 		try(Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE",
-				"mydb",
+				"pluseday",
 				"1234")){
 					log.info(con);
 				} catch(Exception e) {

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.eday.mapper.ChallengeMapper">
+
+	<!-- JOIN을 위한 RESULTMAP 생성 -->
+	<!-- <resultMap id="challengeMap" type="org.eday.domain.ChallengeVO">
+		<id property="challenge_id" column="challenge_id"/>
+		<result property="owner_id" column="owner_id"/>
+		<result property="regDate" column="regdate"/>
+		<result property="startDate" column="startdate"/>
+		<result property="finishDate" column="finishdate"/>
+		<result property="detail" column="detail"/>
+		<association property="subjectVO" javaType="org.eday.domain.SubjectVO">
+			<id property="challenge_id" column="challenge_id"/>
+			<result property="owner_id" column="owner_id"/>
+			<result property="regDate" column="regdate"/>
+			<result property="startDate" column="startdate"/>
+			<result property="finishDate" column="finishdate"/>
+			<result property="detail" column="detail"/>
+			<association property="categoryVO" javaType="org.eday.domain.CategoryVO">
+				<id property="category_id" column="catergory_id"/>
+				<result property="category_title" column="catetory_title"/>
+			</association>
+		</association>
+	</resultMap> -->
+	
+	<!-- 챌린지 생성 -->
+	<insert id="insertChallenge">
+		insert into challenge 
+		(
+			challenge_id, 
+			regdate, 
+			startdate, 
+			finishdate, 
+			detail, 
+			owner_id,
+			subject_id
+		)
+		values 
+		(
+			challenge_seq.nextval, 
+			sysdate, 
+			#{startDate}, 
+			#{finishDate}, 
+			#{detail}, 
+			#{owner_id},
+			#{subject_id} 
+		)
+	</insert>
+	
+	
+	<!-- 카테고리별 챌린지 조회-->
+	<!-- <select id="getChallengList" resultMap="challengeMap">
+		select ch.challenge_id, ch.owner_id, ch.regdate, ch.startdate, ch.finishdate, ch.detail
+		s.subject_id, s.subject, s.catergory_id, s.subject_color, ca.category_title
+		from subject s, categories ca, challenge ch 
+		where ca.catergory_id = s.catergory_id 
+		and s.subject_id = ch.subject_id 
+		and ca.catergory_id = #{category}
+	</select> -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</mapper>
