@@ -29,14 +29,14 @@ public class DataSourceTests {
 	private SqlSessionFactory sqlSessionFactory;
 	
 	// DataSource를 이용한 Connection 테스트
-	@Test
-	public void testConnection(){
-		try(Connection con = dataSource.getConnection()){
-			log.info(con);
-		} catch(Exception e){
-			fail(e.getMessage());
-		}
-	}
+//	@Test
+//	public void testConnection(){
+//		try(Connection con = dataSource.getConnection()){
+//			log.info(con);
+//		} catch(Exception e){
+//			fail(e.getMessage());
+//		}
+//	}
 	
 	// 세션 생성 후 커넥션까지 테스트
 	@Test
