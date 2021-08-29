@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.eday.mapper.MemberMapper">
+
+	
+	<resultMap type="org.eday.domain.MemberVO" id="memberMap">
+	
+			<id column="member_id" property="member_id"/>
+		
+		<result column="member_id" property="member_id"/>
+		
+		<result column="email" property="email"/>
+		
+		<result column="pw" property="pw"/>
+		
+		<result column="name" property="name"/>
+		
+		<collection property="authList" resultMap="authMap"> </collection>
+
+	</resultMap>
+	
+	<resultMap type="org.eday.domain.AuthVO" id="authMap">
+
+		<result column="email" property="email"/>
+
+		<result column="auth" property="auth"/>
+
+	</resultMap>
+	
+	<select id="read" resultMap="memberMap">
+		select mem.member_id, mem.email, mem.pw, mem.member_name, auth.auth 
+		from member mem , auth auth 
+		where mem.email = auth.email
+			and mem.email = #{username} 
+	</select>
+	
+	<insert id="signUp" parameterType="org.eday.domain.MemberVO">
+		insert into members (member_id, member_name, email, pw, nickname, deleted_flag)
+		values (members_seq.nextval, #{member_name}, #{email}, #{pw}, #{nickname}, #{deleted_flag}) 
+	</insert>
+	
+	
+	<insert id="insertAuth" parameterType="org.eday.domain.AuthVO">
+		insert into auth (email) values (#{email}) 
+	</insert>
+	
+	
+
+</mapper>
