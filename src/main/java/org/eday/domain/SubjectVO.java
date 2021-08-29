@@ -7,4 +7,5 @@ public class SubjectVO {
 	private int subject_id;
 	private int category_id;
 	private String subject;
+	private CategoryVO categoryVO;
 }

@@ -27,8 +27,8 @@ public class DataSourceTests {
 	
 	@Setter(onMethod_ = {@Autowired})
 	private SqlSessionFactory sqlSessionFactory;
-	
-	// DataSource¸¦ ÀÌ¿ëÇÑ Connection Å×½ºÆ®
+
+// DataSourceë¥¼ ì´ìš©í•œ Connection í…ŒìŠ¤íŠ¸
 //	@Test
 //	public void testConnection(){
 //		try(Connection con = dataSource.getConnection()){
@@ -38,7 +38,6 @@ public class DataSourceTests {
 //		}
 //	}
 	
-	// ¼¼¼Ç »ı¼º ÈÄ Ä¿³Ø¼Ç±îÁö Å×½ºÆ®
 	@Test
 	public void testMyBatis() {
 		try(SqlSession session = sqlSessionFactory.openSession();
