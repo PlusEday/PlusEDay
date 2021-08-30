@@ -16,7 +16,7 @@ public interface ChallengeMapper {
 	public ChallengeVO readChallenge(String challenge_id);
 	
 	// 챌린지 수정
-	public int updateChallenge(ChallengeVO challenge);
+	public int update(ChallengeVO challenge);
 	
 	// 도전 가능한 챌린지 목록 조회 : 현재날짜랑 비교해서,, 시작날짜가 현재날짜 이후인 챌린지
 	public List<ChallengeVO> getChallengList(String category);

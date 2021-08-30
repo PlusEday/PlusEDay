@@ -60,7 +60,7 @@ public class ChallengeMapperTests {
 		challenge.setSubject_id("3");
 		challenge.setDetail("두달간 일회용컵 대신 텀블러를 사용합시다!");
 		log.info("update challenge. . . . . .");
-		mapper.updateChallenge(challenge);
+		mapper.update(challenge);
 	} // 챌린지 정보 수정 테스트
 	
 }
