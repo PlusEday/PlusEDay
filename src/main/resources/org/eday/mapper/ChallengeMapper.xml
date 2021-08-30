@@ -3,79 +3,29 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.eday.mapper.ChallengeMapper">
-
-	<!-- JOIN을 위한 RESULTMAP 생성 -->
-	<!-- <resultMap id="challengeMap" type="org.eday.domain.ChallengeVO">
-		<id property="challenge_id" column="challenge_id"/>
-		<result property="owner_id" column="owner_id"/>
-		<result property="regDate" column="regdate"/>
-		<result property="startDate" column="startdate"/>
-		<result property="finishDate" column="finishdate"/>
-		<result property="detail" column="detail"/>
-		<association property="subjectVO" javaType="org.eday.domain.SubjectVO">
-			<id property="challenge_id" column="challenge_id"/>
-			<result property="owner_id" column="owner_id"/>
-			<result property="regDate" column="regdate"/>
-			<result property="startDate" column="startdate"/>
-			<result property="finishDate" column="finishdate"/>
-			<result property="detail" column="detail"/>
-			<association property="categoryVO" javaType="org.eday.domain.CategoryVO">
-				<id property="category_id" column="catergory_id"/>
-				<result property="category_title" column="catetory_title"/>
-			</association>
-		</association>
-	</resultMap> -->
-	
 	<!-- 챌린지 생성 -->
-	<insert id="insertChallenge">
-		insert into challenge 
-		(
-			challenge_id, 
-			regdate, 
-			startdate, 
-			finishdate, 
-			detail, 
-			owner_id,
-			subject_id
-		)
-		values 
-		(
-			challenge_seq.nextval, 
-			sysdate, 
-			#{startDate}, 
-			#{finishDate}, 
-			#{detail}, 
-			#{owner_id},
-			#{subject_id} 
-		)
-	</insert>
-	
-	
-	<!-- 카테고리별 챌린지 조회-->
-	<!-- <select id="getChallengList" resultMap="challengeMap">
-		select ch.challenge_id, ch.owner_id, ch.regdate, ch.startdate, ch.finishdate, ch.detail
-		s.subject_id, s.subject, s.catergory_id, s.subject_color, ca.category_title
-		from subject s, categories ca, challenge ch 
-		where ca.catergory_id = s.catergory_id 
-		and s.subject_id = ch.subject_id 
-		and ca.catergory_id = #{category}
-	</select> -->
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+    <insert id="create" parameterType="org.eday.domain.ChallengeVO">
+    	<selectKey keyProperty="challenge_id" order="BEFORE" resultType="String">
+    		select challenge_seq.nextval from dual
+    	</selectKey>
+        insert into challenge (challenge_id, regdate, startdate, finishdate, detail, owner_id, subject_id)
+        values (#{challenge_id}, sysdate, #{startDate}, #{finishDate} , #{detail}, #{owner_id}, #{subject_id})
+    </insert>
+    
+    <!-- 챌린지 생성과 동시에 멤버 추가 -->
+    <insert id="createChallengeMember" parameterType="org.eday.domain.ChallengeMemberVO">
+    	insert into challenge_member_relation (challenge_id, member_id) 
+    	values (#{challenge_id},  #{member_id})
+    </insert>
+    
+    <!-- 챌린지 1개 조회 -->
+    <select id="readChallenge" resultType="org.eday.domain.ChallengeVO">
+    	select * from challenge where challenge_id = #{challenge_id}
+    </select>
+    
+    <!-- 챌린지  내용 수정 -->
+    <update id="updateChallenge" parameterType="org.eday.domain.ChallengeVO">
+    	update challenge set startdate = #{startDate}, finishdate = #{finishDate}, detail = #{detail}
+    	where challenge_id = #{challenge_id}
+    </update>
 </mapper>
