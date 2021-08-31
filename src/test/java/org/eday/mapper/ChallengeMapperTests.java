@@ -22,7 +22,7 @@ public class ChallengeMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private ChallengeMapper mapper;
 	
-	@Test
+	/*@Test
 	public void insertChallengeTest() {
 		ChallengeVO challenge = new ChallengeVO();
 		challenge.setDetail("크리스마스까지 일회용컵 대신 텀블러를 사용합시다!");
@@ -61,6 +61,10 @@ public class ChallengeMapperTests {
 		challenge.setDetail("두달간 일회용컵 대신 텀블러를 사용합시다!");
 		log.info("update challenge. . . . . .");
 		mapper.update(challenge);
-	} // 챌린지 정보 수정 테스트
+	}*/ // 챌린지 정보 수정 테스트
 	
+	@Test
+	public void countChallengeMemberTest(){
+		log.info("결과 : " + mapper.countChallengeMember("37"));
+	}
 }

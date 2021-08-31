@@ -21,5 +21,7 @@ public interface ChallengeMapper {
 	// 도전 가능한 챌린지 목록 조회 : 현재날짜랑 비교해서,, 시작날짜가 현재날짜 이후인 챌린지
 	public List<ChallengeVO> getChallengList(String category);
 	
+	// 챌린지 멤버 수 가져오기
+	public int countChallengeMember(String challenge_id);
 	// 도전중인 챌린지 목록 조회 : 시작날짜가 
 }

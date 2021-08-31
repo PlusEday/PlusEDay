@@ -13,7 +13,7 @@
         TO_DATE(#{finishDate}, 'YYYY-MM-DD') , #{detail}, #{owner_id}, #{subject_id})
     </insert>
     
-    <!-- 챌린지 생성과 동시에 멤버 추가 -->
+    <!-- 챌린지 생성과 동시에 멤버 추가 && 챌린지 신청 -->
     <insert id="createChallengeMember" parameterType="org.eday.domain.ChallengeMemberVO">
     	insert into challenge_member_relation (challenge_id, member_id) 
     	values (#{challenge_id},  #{member_id})
@@ -32,4 +32,11 @@
     	detail = #{detail}
     	where challenge_id = #{challenge_id}
     </update>
+    
+    <!-- 회원수 가져오기 -->
+    <select id="countChallengeMember" resultType="java.lang.Integer">
+    	select count(*) from challenge_member_relation 
+    	where challenge_id = #{challenge_id}
+    </select>
+   
 </mapper>
