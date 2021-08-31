@@ -28,7 +28,7 @@ public class ChallengeServiceImpl implements ChallengeService {
 		member.setChallenge_id(challenge.getChallenge_id());
 		member.setMember_id(challenge.getOwner_id());
 		return mapper.createChallengeMember(member);
-	}
+	} // 챌린지 생성
 
 	@Override
 	public ChallengeVO getChallenge(String challenge_id) {
@@ -39,12 +39,18 @@ public class ChallengeServiceImpl implements ChallengeService {
 		challenge.setStartDate(challenge.getStartDate().substring(0, 10));
 		challenge.setFinishDate(challenge.getFinishDate().substring(0, 10));
 		return challenge;
-	}
+	} // 챌린지 1개 정보 가져오기
 
 	@Override
 	public int updateChallenge(ChallengeVO challenge) {
 		log.info("update Challenge Service. . . . . .");
 		return mapper.update(challenge);
-	}
+	} // 챌린지 정보 수정
+
+	@Override
+	public int joinChallenge(ChallengeMemberVO member) {
+		log.info("join Challenge Service. . . . . .");
+		return mapper.createChallengeMember(member);
+	} // 챌린지 참여
 
 }
