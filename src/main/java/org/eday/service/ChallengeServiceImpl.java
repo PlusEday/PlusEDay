@@ -21,19 +21,20 @@ public class ChallengeServiceImpl implements ChallengeService {
 	
 	@Override
 	@Transactional
-	public void insertChallenge(ChallengeVO challenge) {
+	public int insertChallenge(ChallengeVO challenge) {
 		log.info("insert Challenge Service. . . . . . ");
 		mapper.create(challenge);
 		ChallengeMemberVO member = new ChallengeMemberVO();
 		member.setChallenge_id(challenge.getChallenge_id());
 		member.setMember_id(challenge.getOwner_id());
-		mapper.createChallengeMember(member);
+		return mapper.createChallengeMember(member);
 	}
 
 	@Override
 	public ChallengeVO getChallenge(String challenge_id) {
 		log.info("get Challenge Service. . . . . . ");
 		ChallengeVO challenge = mapper.readChallenge(challenge_id);
+		log.info("에러발생지점 : " + challenge);
 		challenge.setRegDate(challenge.getRegDate().substring(0, 10));
 		challenge.setStartDate(challenge.getStartDate().substring(0, 10));
 		challenge.setFinishDate(challenge.getFinishDate().substring(0, 10));
