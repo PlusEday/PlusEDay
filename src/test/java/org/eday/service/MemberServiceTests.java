@@ -34,12 +34,13 @@ public class MemberServiceTests {
 	@Test
 	public void testRead(){
 		
-		MemberVO mem =service.read("11");
+		MemberVO mem =service.read("nam@gmail.com");
 		if(mem != null){
 			System.out.println("성공");
 		}else{
 			System.out.println("실패");
 		}
+		log.info(mem);
 	}
 	
 	

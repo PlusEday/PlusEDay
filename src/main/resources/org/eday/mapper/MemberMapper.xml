@@ -36,7 +36,7 @@
 	</resultMap>
 	
 	<select id="read" resultMap="memberMap">
-		select m.member_id, m.email, m.pw, m.member_name, a.auth 
+		select m.member_id, m.email, m.pw, m.member_name, a.auth ,m.nickname,m.badge_id
 		from members m , auth a 
 		where m.email = a.email
 			and m.email = #{username} 
