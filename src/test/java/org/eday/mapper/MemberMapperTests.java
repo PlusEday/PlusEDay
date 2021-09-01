@@ -18,17 +18,23 @@ public class MemberMapperTests {
 	@Setter(onMethod_= @Autowired)
 	private MemberMapper mapper;
 	
+//	@Test
+//	public void testSignUp(){
+//		MemberVO member = new MemberVO();
+//		member.setEmail("yoon@gg.com");
+//		member.setMember_name("윤혜경");
+//		member.setPw("11112");
+//		member.setNickname("윤");
+//		mapper.signUp(member);
+//	
+//	}
+	
 	@Test
-	public void testSignUp(){
-		MemberVO member = new MemberVO();
-		member.setEmail("beom1843@naver.com");
-		member.setMember_name("좀여범");
-		member.setPw("1111");
-		member.setNickname("뭉버미");
-		mapper.signUp(member);
-	
+	public void testLogin(){
+		String id="beom1843@naver.com";
+		MemberVO member=mapper.read("yoon@gmail.com");
+		
+		log.info(member);
 	}
-	
-	
 	
 }
