@@ -10,7 +10,7 @@ import lombok.extern.log4j.Log4j;
 
 @Log4j
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {org.eday.config.RootConfig.class})
+@ContextConfiguration(classes = {org.eday.config.RootConfig.class, org.eday.config.SecurityConfig.class})
 public class BoardMapperTests {
 	@Setter(onMethod_ = {@Autowired})
 	private BoardMapper mapper;
@@ -19,8 +19,8 @@ public class BoardMapperTests {
 	public void testInsert(){
 		BoardVO board = new BoardVO();
 		board.setTitle("hello world");
-		board.setContent("³»¿ë");
-		board.setWriter("¾È³ç");
+		board.setContent("ï¿½ï¿½ï¿½ï¿½");
+		board.setWriter("ï¿½È³ï¿½");
 		mapper.insert(board);
 	}*/
 	
