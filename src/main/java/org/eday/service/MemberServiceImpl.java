@@ -25,9 +25,18 @@ public class MemberServiceImpl implements MemberService{
 		AuthVO auth = new AuthVO();
 		auth.setEmail(member.getEmail());
 		
+		System.out.println(member.getPw());
+		
 		mapper.signUp(member);
 		return mapper.insertAuth(auth);
 	}
+
+	@Override
+	public MemberVO read(String email) {
+
+		return mapper.read(email);
+	}
+	
 	
 
 }

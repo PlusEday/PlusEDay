@@ -19,4 +19,9 @@ public class MemberVO {
 	
 	private String auth;
 	private List<AuthVO> authList;
+	
+	private String photo_name;
+	private String upload_path;
+	
+	private BadgeVO badge;
 }

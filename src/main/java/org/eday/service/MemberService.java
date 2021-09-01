@@ -4,4 +4,5 @@ import org.eday.domain.MemberVO;
 
 public interface MemberService {
 	public int insertMember(MemberVO member);
+	public MemberVO read(String email);
 }

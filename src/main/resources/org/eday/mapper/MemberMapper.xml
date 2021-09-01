@@ -15,7 +15,13 @@
 		
 		<result column="pw" property="pw"/>
 		
-		<result column="name" property="name"/>
+		<result column="member_name" property="member_name"/>
+		<result column="nickname" property="nickname"/>
+		<result column="deleted_flag" property="deleted_flag"/>
+
+		<result column="photo_name" property="photo_name"/>
+		<result column="upload_path" property="upload_path"/>
+		<result column="badge_id" property="badge_id"/>
 		
 		<collection property="authList" resultMap="authMap"> </collection>
 
@@ -30,10 +36,16 @@
 	</resultMap>
 	
 	<select id="read" resultMap="memberMap">
-		select mem.member_id, mem.email, mem.pw, mem.member_name, auth.auth 
-		from member mem , auth auth 
-		where mem.email = auth.email
-			and mem.email = #{username} 
+		select m.member_id, m.email, m.pw, m.member_name, a.auth 
+		from members m , auth a 
+		where m.email = a.email
+			and m.email = #{username} 
+	</select>
+	
+	<select id="loggedIn" resultType="org.eday.domain.MemberVO">
+		select *
+		from members
+		where email=#{email}
 	</select>
 	
 	<insert id="signUp" parameterType="org.eday.domain.MemberVO">
