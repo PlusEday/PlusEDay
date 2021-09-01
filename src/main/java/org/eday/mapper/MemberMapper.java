@@ -11,4 +11,5 @@ public interface MemberMapper {
 	
 	public int insertAuth(AuthVO  auth);
 	
+	public MemberVO loggedIn(String email);
 }

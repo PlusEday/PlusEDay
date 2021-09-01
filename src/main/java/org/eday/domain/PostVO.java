@@ -15,5 +15,6 @@ public class PostVO {
 	private List<Post_photoVO> photo;
 	private List<MemberVO> likedMember;
 	private int reportCnt;
+	private String member_id;
 	
 }
