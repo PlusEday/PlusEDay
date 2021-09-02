@@ -12,5 +12,5 @@ public class ChallengeVO {
 	private String finishDate;
 	private String detail;
 	private String owner_id;
-	private String subject_id;
+	private String subject_id; // subject
 }

@@ -2,6 +2,7 @@ package org.eday.controller;
 
 import java.util.Map;
 
+import org.eday.domain.ChallengeMemberVO;
 import org.eday.domain.ChallengeVO;
 import org.eday.service.ChallengeService;
 import org.springframework.http.HttpStatus;
@@ -53,4 +54,18 @@ public class ChallengeController {
 				? new ResponseEntity<>(challengeservice.getChallenge(challenge_id), HttpStatus.OK):
 					new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	} // 챌린지 1개 정보 가져오는 API
+	
+	@PostMapping(value="/joinChallenge",
+			consumes="application/json",
+			produces={MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<String> join(@RequestBody Map<String, String> param) {
+		String challenge_id = param.get("challenge_id");
+		String member_id = param.get("member_id");
+		ChallengeMemberVO vo = new ChallengeMemberVO();
+		vo.setChallenge_id(challenge_id);
+		vo.setMember_id(member_id);
+		return challengeservice.joinChallenge(vo) == 1 ? 
+				new ResponseEntity<>("success", HttpStatus.OK) :
+					new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	} // 챌린지 참여
 }
