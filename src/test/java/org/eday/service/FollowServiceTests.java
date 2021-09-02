@@ -1,5 +1,6 @@
 package org.eday.service;
 
+import org.eday.domain.FollowVO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,15 @@ public class FollowServiceTests {
 	@Test
 	public void test(){
 		log.info(service.getFollowings("1"));
+	}
+	
+
+	@Test
+	public void follow(){
+		FollowVO follow=new FollowVO();
+		
+		follow.setFollowing_id("1");
+		follow.setMember_id("13");
+		log.info(service.follow(follow));
 	}
 }

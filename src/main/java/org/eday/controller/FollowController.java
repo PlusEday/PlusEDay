@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -31,7 +32,8 @@ public class FollowController {
 
 	private FollowService service;
 
-	@PostMapping(value = "/", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
+	@ApiOperation(value="팔로우", notes="사용자가 상대를 팔로우한 이력의 여부와 상관 없이 같게 작동합니다.")
+	@PostMapping(value = "/follow", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
 	public ResponseEntity<String> follow(@RequestBody FollowVO follow) {
 
 		int re = service.follow(follow);
@@ -40,7 +42,7 @@ public class FollowController {
 				: new ResponseEntity<>("success", HttpStatus.OK);
 	}
 	
-	
+	@ApiOperation(value="팔로잉리스트", notes="사용자가 팔로우하고 있는 회원의 리스트(목록에 출력할 정보)를 출력합니다.")
 	@GetMapping(value = "/followings",
 			produces={
 					MediaType.APPLICATION_XML_VALUE,
@@ -50,6 +52,7 @@ public class FollowController {
 		return new ResponseEntity<List<UserInfo>>(service.getFollowings(member_id),HttpStatus.OK);
 	}
 	
+	@ApiOperation(value="팔로워리스트", notes="사용자를 팔로우하고 있는 회원의 리스트(목록에 출력할 정보)를 출력합니다.")
 	@GetMapping(value = "/followers",
 			produces={
 					MediaType.APPLICATION_XML_VALUE,

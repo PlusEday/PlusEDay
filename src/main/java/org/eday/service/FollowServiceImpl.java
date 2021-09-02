@@ -53,7 +53,8 @@ public class FollowServiceImpl implements FollowService{
 		String isFollowing = mapper.checkFollow(follow);
 		
 		log.info(isFollowing);
-		if(isFollowing=="y"){
+		if(isFollowing.equals("y")){
+			log.info("맞다");
 		re+=mapper.updateFollow(follow);
 		}else{
 		re+=mapper.initFollow(follow);
