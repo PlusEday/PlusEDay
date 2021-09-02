@@ -23,5 +23,7 @@ public class MemberVO {
 	private String photo_name;
 	private String upload_path;
 	
-	private BadgeVO badge;
+	private String badge_id;
+	private String badge_title;
+	
 }

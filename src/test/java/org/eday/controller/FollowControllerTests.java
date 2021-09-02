@@ -1,14 +1,12 @@
 package org.eday.controller;
 
 import org.junit.Before;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -21,7 +19,8 @@ import lombok.extern.log4j.Log4j;
 		org.eday.config.RootConfig.class, org.eday.config.SecurityConfig.class,
 		org.eday.config.ServletConfig.class})
 @Log4j
-public class MemberControllerTests {
+public class FollowControllerTests {
+
 	@Setter(onMethod_={@Autowired})
 	private WebApplicationContext ctx;
 	
@@ -32,5 +31,5 @@ public class MemberControllerTests {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 	}
 	
-
+	
 }
