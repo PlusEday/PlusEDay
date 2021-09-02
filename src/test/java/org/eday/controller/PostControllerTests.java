@@ -4,6 +4,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 import org.eday.domain.PostVO;
+import org.eday.domain.Post_likeVO;
 import org.eday.mapper.PostMapperTests;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,7 +40,7 @@ public class PostControllerTests {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 	}
 
-	@Test
+	/*@Test
 	public void testConvert() throws Exception {
 		
 		PostVO post = new PostVO();
@@ -53,6 +54,21 @@ public class PostControllerTests {
 		mockMvc.perform(MockMvcRequestBuilders.post("/post/createPost/")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(jsonStr));
-	}
+	}*/
 	
+	@Test
+	public void testinsertPostLike() throws Exception {
+		Post_likeVO likevo = new Post_likeVO();
+		likevo.setMember_id("2");
+		likevo.setPost_id("2");
+		likevo.setLike_toggle("y");
+		
+		String jsonStr = new Gson().toJson(likevo);
+		log.info(likevo);
+		
+		mockMvc.perform(MockMvcRequestBuilders.post("/post/likePost")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(jsonStr)
+				);
+	}
 }
