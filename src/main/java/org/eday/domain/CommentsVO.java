@@ -6,7 +6,8 @@ import lombok.Data;
 public class CommentsVO {
 
 	private String comment_id;
-	private String member_id;
-	private String post_id;
 	private String detail;
+	private String post_id;
+	private String member_id;
+	
 }

@@ -1,5 +1,6 @@
 package org.eday.service;
 
+import org.eday.domain.ChallengeMemberVO;
 import org.eday.domain.ChallengeVO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,4 +41,12 @@ public class ChallengeServiceTests {
 		challenge.setDetail("[수정2] 일회용컵 대신 텀플러 사용하는 사람들의 모임!");
 		log.info(service.updateChallenge(challenge));
 	} // 챌린지 정보 수정 서비스 테스트
+	
+	@Test
+	public void joinChallengeTest() {
+		ChallengeMemberVO vo = new ChallengeMemberVO();
+		vo.setChallenge_id("37");
+		vo.setMember_id("3");
+		service.joinChallenge(vo);
+	} // 챌린지 참여 서비스 테스트
 }

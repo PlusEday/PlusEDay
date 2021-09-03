@@ -20,10 +20,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
-@RequestMapping("/*")
+@RequestMapping("/member/")
 @RestController
 @Log4j
 @AllArgsConstructor
@@ -35,6 +36,8 @@ public class MemberController {
 	private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 	private PasswordEncoder passwordEncoder;
 	
+	
+	@ApiOperation(value="로그인", notes="사용자의 이메일과 비밀번호를 받습니다.")
 	@PostMapping(value="/logIn",
 			consumes="application/json",
 			produces={MediaType.APPLICATION_JSON_UTF8_VALUE,

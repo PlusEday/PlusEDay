@@ -6,6 +6,7 @@ import lombok.Data;
 public class FollowVO {
 	
 	private String member_id;
-	private String follwing_id;
+	private String following_id;
+	private String follow_toggle;
 
 }

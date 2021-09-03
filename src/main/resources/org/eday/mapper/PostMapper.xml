@@ -8,4 +8,21 @@
 	INSERT INTO Post(post_id, detail, regdate, member_id) VALUES(post_seq.nextval, #{detail}, sysdate, #{member_id})
 </insert>
 
+<!-- 포스트 좋아요 눌렀는지 검사 -->
+<select id="selectCheckLikePost" resultType="String">
+	select like_toggle from post_like 
+	where member_id = #{member_id} 
+	and post_id=#{post_id}
+</select>
+
+<!-- 포스트 좋아요 클릭시 포스트 좋아요 테이블에 값 추가 -->
+<insert id="insertPostLike">
+	insert into post_like (member_id, post_id) values (#{member_id}, #{post_id})
+</insert>
+
+<!-- 포스트 좋아요 클릭시 수정 -->
+<update id="updatePostLike">
+	update post_like set like_toggle = #{like_toggle} 
+	where member_id = #{member_id} and post_id = #{post_id}
+</update>
 </mapper>

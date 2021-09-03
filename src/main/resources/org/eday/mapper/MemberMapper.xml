@@ -58,6 +58,9 @@
 		insert into auth (email) values (#{email}) 
 	</insert>
 	
+	<select id="searchGroup" resultType="org.eday.domain.GroupVO">
+	
+	</select>
 	
 
 </mapper>
