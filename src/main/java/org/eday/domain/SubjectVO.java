@@ -5,7 +5,6 @@ import lombok.Data;
 @Data
 public class SubjectVO {
 	private int subject_id;
-	private int category_id;
+	private int category_id; // category
 	private String subject;
-	private CategoryVO categoryVO;
 }

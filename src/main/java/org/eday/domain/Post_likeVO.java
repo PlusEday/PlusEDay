@@ -7,4 +7,5 @@ public class Post_likeVO {
 
 	private String member_id;
 	private String post_id;
+	private String like_toggle;
 }

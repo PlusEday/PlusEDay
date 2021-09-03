@@ -34,7 +34,7 @@
     </update>
     
     <!-- 회원수 가져오기 -->
-    <select id="countChallengeMember" resultType="java.lang.Integer">
+    <select id="countChallengeMember">
     	select count(*) from challenge_member_relation 
     	where challenge_id = #{challenge_id}
     </select>

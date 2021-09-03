@@ -3,6 +3,7 @@ package org.eday.service;
 import static org.junit.Assert.assertNotNull;
 
 import org.eday.domain.PostVO;
+import org.eday.domain.Post_likeVO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,4 +41,28 @@ public class PostServiceTests {
 		
 		log.info("포스팅 된 게시물:" + post);
 	}
+	
+	@Test
+	public void testpostLike(){
+		
+		/* 1. 좋아요를 누른적이 없는 경우
+		 * Post_likeVO vo = new Post_likeVO();
+		vo.setMember_id("3");
+		vo.setPost_id("2");
+		log.info(service.postLike(vo));*/
+		
+		/* 2. 좋아요가 되어있는 경우 
+		 * Post_likeVO vo = new Post_likeVO();
+		vo.setMember_id("2");
+		vo.setPost_id("2");
+		vo.setLike_toggle("y");
+		log.info(service.postLike(vo));*/
+		
+		// 3. 좋아요가 취소되어있는 경우
+		Post_likeVO vo = new Post_likeVO();
+		vo.setMember_id("2");
+		vo.setPost_id("2");
+		vo.setLike_toggle("n");
+		log.info(service.postLike(vo));
+	} // 좋아요 테스트
 }
