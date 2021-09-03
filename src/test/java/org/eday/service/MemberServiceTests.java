@@ -21,27 +21,27 @@ public class MemberServiceTests {
 
 	@Setter(onMethod_={@Autowired})
 	private MemberService service;
-//	@Test
-//	public void testInsert(){
-//		MemberVO member = new MemberVO();
-//		member.setEmail("nam@gmail.com");
-//		member.setMember_name("남기훈");
-//		member.setPw("1111");
-//		member.setNickname("훈");
-//		service.insertMember(member);
-//	}
-	
 	@Test
-	public void testRead(){
-		
-		MemberVO mem =service.read("nam@gmail.com");
-		if(mem != null){
-			System.out.println("성공");
-		}else{
-			System.out.println("실패");
-		}
-		log.info(mem);
+	public void testInsert(){
+		MemberVO member = new MemberVO();
+		member.setEmail("cho@gmail.com");
+		member.setMember_name("조은범");
+		member.setPw("1111");
+		member.setNickname("은버미");
+		service.insertMember(member);
 	}
+	
+//	@Test
+//	public void testRead(){
+//		
+//		MemberVO mem =service.read("nam@gmail.com");
+//		if(mem != null){
+//			System.out.println("성공");
+//		}else{
+//			System.out.println("실패");
+//		}
+//		log.info(mem);
+//	}
 	
 	
 //	@Setter(onMethod_={@Autowired})

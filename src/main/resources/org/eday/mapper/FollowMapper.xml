@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.eday.mapper.FollowMapper">
+
+	<insert id="initFollow" parameterType="org.eday.domain.FollowVO" >
+		insert into follow (following_id,member_id)
+		values(#{following_id}, #{member_id})
+	</insert>
+	
+	<select id="getFollowings" resultType="org.eday.domain.MemberVO">
+		select M.Member_Id,M.Nickname, b.title ,m.photo_name,M.Upload_Path
+		from (members m left outer join follow f on (f.following_id=m.member_id))
+     		left outer join badge b on (m.badge_id=b.badge_id)
+
+		where  f.member_id=#{member_id}
+	</select>
+		
+	<select id="getFollowers" resultType="org.eday.domain.MemberVO">
+		select M.Member_Id,M.Nickname, b.title ,m.photo_name,M.Upload_Path
+		from (members m left outer join follow f on (f.member_id=m.member_id))
+     left outer join badge b on (m.badge_id=b.badge_id)
+
+		where  f.following_id=#{member_id}
+	</select>
+	
+	<update id="updateFollow" parameterType="org.eday.domain.FollowVO">
+		update follow
+		set follow_toggle =
+			case when follow_toggle='y' then 'n'
+				when follow_toggle='n' then 'y'
+				end
+				where following_id= #{following_id}
+				and member_id= #{member_id}
+	</update>
+		
+	<select id="checkFollow" resultType="String">
+		select nvl(max('y'),'n') as isFollowing
+		from follow
+		where following_id= #{following_id}
+			and member_id= #{member_id}
+	</select>
+
+
+
+</mapper>
