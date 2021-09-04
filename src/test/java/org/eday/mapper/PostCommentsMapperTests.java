@@ -48,4 +48,10 @@ public class PostCommentsMapperTests {
 		vo.setMember_id("2");
 		log.info(mapper.deleteComment(vo));
 	}*/
+	
+	@Test
+	public void getListCommentTest() {
+		String post_id = "2";
+		log.info(mapper.readListComment(post_id));
+	}
 }

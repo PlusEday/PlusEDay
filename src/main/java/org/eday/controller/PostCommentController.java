@@ -1,5 +1,6 @@
 package org.eday.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.eday.domain.CommentsVO;
@@ -63,5 +64,15 @@ public class PostCommentController {
 		int delete_result = service.removeComment(comment);
 		return delete_result == 1? new ResponseEntity<String>("success", HttpStatus.OK) :
 			new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	@ApiOperation(value="포스트의 댓글목록가져오기", notes="포스트 아이디를 받습니다.")
+	@PostMapping( value="/getList", consumes="application/json", produces="application/json")
+	public ResponseEntity<List<CommentsVO>> getList(@RequestBody Map<String, String> param) {
+		String post_id = param.get("post_id");
+		log.info("Get List Comment Controller. . . . . .");
+		List<CommentsVO> comment = service.getListComment(post_id);
+		return comment != null ? new ResponseEntity<>(service.getListComment(post_id), HttpStatus.OK) :
+			new ResponseEntity<List<CommentsVO>>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }

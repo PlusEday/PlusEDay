@@ -45,4 +45,10 @@ public class PostCommentServiceTests {
 		CommentsVO vo = service.getComment("2");
 		log.info(service.removeComment(vo));
 	}*/
+	
+	/*@Test
+	public void getListCommentTest() {
+		String post_id = "2";
+		service.getListComment(post_id).forEach(comment -> log.info(comment));
+	}*/
 }

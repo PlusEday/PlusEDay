@@ -1,5 +1,7 @@
 package org.eday.service;
 
+import java.util.List;
+
 import org.eday.domain.CommentsVO;
 import org.eday.mapper.PostCommentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +41,12 @@ public class PostCommentServiceImpl implements PostCommentService {
 	public int removeComment(CommentsVO comment) {
 		log.info("remove comment Service. . . . . .");
 		return mapper.deleteComment(comment);
+	}
+
+	@Override
+	public List<CommentsVO> getListComment(String post_id) {
+		log.info("get comment list Service. . . . . .");
+		return mapper.readListComment(post_id);
 	}
 
 }

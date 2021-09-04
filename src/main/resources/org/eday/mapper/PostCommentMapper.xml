@@ -20,4 +20,8 @@
 	<delete id="deleteComment">
 		delete from comments where member_id = #{member_id} and comment_id = #{comment_id}
 	</delete>
+	
+	<select id="readListComment" resultType="org.eday.domain.CommentsVO">
+		select * from comments where post_id = #{post_id}
+	</select>
 </mapper>
