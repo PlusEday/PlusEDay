@@ -9,6 +9,12 @@
 		insert into member_photo (member_photo_id,mimetype, original_name, data, member_id)
 			values(member_photo_seq.nextval, #{mimetype},#{original_name},#{data},#{member_id})
 	</insert>
+	
+	<select id="getProfile" resultType="org.eday.domain.MemberPhotoVO">
+		select * 
+		from member_photo
+		where member_id=#{member_id}
+	</select>
 
 
 

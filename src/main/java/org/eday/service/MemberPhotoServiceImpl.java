@@ -22,4 +22,10 @@ public class MemberPhotoServiceImpl implements MemberPhotoService{
 		return mapper.uploadProfile(profile);
 	}
 
+	@Override
+	public MemberPhotoVO getProfile(String member_id) {
+
+		return mapper.getProfile(member_id);
+	}
+
 }
