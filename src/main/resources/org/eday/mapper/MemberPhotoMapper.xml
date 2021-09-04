@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.eday.mapper.MemberPhotoMapper">
+
+	
+	<insert id="uploadProfile" parameterType="org.eday.domain.MemberPhotoVO">
+		insert into member_photo (member_photo_id,mimetype, original_name, data, member_id)
+			values(member_photo_seq.nextval, #{mimetype},#{original_name},#{data},#{member_id})
+	</insert>
+
+
+
+</mapper>
