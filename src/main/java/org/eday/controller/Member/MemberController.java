@@ -1,4 +1,4 @@
-package org.eday.controller;
+package org.eday.controller.Member;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
@@ -99,7 +99,7 @@ public class MemberController {
 	
 	
 
-
+	@ApiOperation(value="회원가입", notes="")
 	@PostMapping(value="/signUp",
 				consumes="application/json",
 				produces={MediaType.TEXT_PLAIN_VALUE})
