@@ -8,9 +8,9 @@
     	<selectKey keyProperty="challenge_id" order="BEFORE" resultType="String">
     		select challenge_seq.nextval from dual
     	</selectKey>
-        insert into challenge (challenge_id, regdate, startdate, finishdate, detail, owner_id, subject_id)
+        insert into challenge (challenge_id, regdate, startdate, finishdate, detail, owner_id, subject_id, subject)
         values (#{challenge_id}, TO_DATE(sysdate, 'YYYY-MM-DD'), TO_DATE(#{startDate}, 'YYYY-MM-DD'),
-        TO_DATE(#{finishDate}, 'YYYY-MM-DD') , #{detail}, #{owner_id}, #{subject_id})
+        TO_DATE(#{finishDate}, 'YYYY-MM-DD') , #{detail}, #{owner_id}, #{subject_id}, #{subject})
     </insert>
     
     <!-- 챌린지 생성과 동시에 멤버 추가 && 챌린지 신청 -->
@@ -37,6 +37,15 @@
     <select id="countChallengeMember">
     	select count(*) from challenge_member_relation 
     	where challenge_id = #{challenge_id}
+    </select>
+    
+    <select id="getChallengeList" resultType="org.eday.domain.ChallengeVO">
+    	<![CDATA[
+    		select ch.challenge_id, ch.owner_id, ch.regdate, ch.startdate, ch.finishdate, ch.detail,
+			s.subject_id, s.subject, s.catergory_id, s.subject_color, ca.category_title 
+			from subject s, categories ca, challenge ch where s.catergory_id = ca.catergory_id and
+			ch.subject_id = s.subject_id and startdate < sysdate;
+    	]]>
     </select>
    
 </mapper>

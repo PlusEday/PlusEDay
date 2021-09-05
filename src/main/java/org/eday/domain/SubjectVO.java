@@ -6,5 +6,5 @@ import lombok.Data;
 public class SubjectVO {
 	private int subject_id;
 	private int category_id; // category
-	private String subject;
+	private String subject_color;
 }

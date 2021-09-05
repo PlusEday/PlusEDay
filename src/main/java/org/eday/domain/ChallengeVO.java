@@ -13,4 +13,5 @@ public class ChallengeVO {
 	private String detail;
 	private String owner_id;
 	private String subject_id; // subject
+	private String subject;
 }

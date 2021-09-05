@@ -22,8 +22,10 @@ public class ChallengeServiceImpl implements ChallengeService {
 	@Override
 	@Transactional
 	public int insertChallenge(ChallengeVO challenge) {
+		log.info("challenge. . .before" + challenge.getChallenge_id());
 		log.info("insert Challenge Service. . . . . . ");
 		mapper.create(challenge);
+		log.info("challenge. . .after" + challenge.getChallenge_id());
 		ChallengeMemberVO member = new ChallengeMemberVO();
 		member.setChallenge_id(challenge.getChallenge_id());
 		member.setMember_id(challenge.getOwner_id());

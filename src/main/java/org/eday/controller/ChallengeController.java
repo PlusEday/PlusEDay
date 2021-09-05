@@ -17,7 +17,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
-@RequestMapping("/*")
+@RequestMapping("/challenge")
 @RestController
 @AllArgsConstructor
 public class ChallengeController {
