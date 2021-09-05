@@ -2,9 +2,11 @@ package org.eday.mapper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import org.eday.domain.ChallengeMemberVO;
 import org.eday.domain.ChallengeVO;
+import org.eday.domain.Challenge_ListDTO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,7 @@ public class ChallengeMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private ChallengeMapper mapper;
 	
-	@Test
+	/*@Test
 	public void insertChallengeTest() {
 		ChallengeVO challenge = new ChallengeVO();
 		challenge.setDetail("크리스마스까지 일회용컵 대신 텀블러를 사용합시다!");
@@ -33,7 +35,7 @@ public class ChallengeMapperTests {
 		challenge.setSubject("챌린지!");
 		log.info("insert challenge. . . . . .");
 		mapper.create(challenge);
-	} // 챌린지 생성 테스트
+	}*/ // 챌린지 생성 테스트
 	
 	/*@Test
 	public void insertChallengeMemberTest() {
@@ -68,4 +70,10 @@ public class ChallengeMapperTests {
 	public void countChallengeMemberTest(){
 		log.info("결과 : " + mapper.countChallengeMember("37"));
 	}*/
+	
+	@Test
+	public void getIngChallengeListTest() {
+		List<Challenge_ListDTO> lists = mapper.getIngChallengeList();
+		lists.forEach(challenge->log.info(challenge));
+	}
 }

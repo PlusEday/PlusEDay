@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.eday.domain.ChallengeMemberVO;
 import org.eday.domain.ChallengeVO;
+import org.eday.domain.Challenge_ListDTO;
 
 public interface ChallengeMapper {
 	// 챌린지 생성
@@ -22,7 +23,7 @@ public interface ChallengeMapper {
 	public List<ChallengeVO> getChallengeList(String category);
 	
 	// 현재 진행중인 챌린지 목록 조회 : 현재날짜랑 비교
-	public List<ChallengeVO> getIngChallengeList();
+	public List<Challenge_ListDTO> getIngChallengeList();
 	
 	// 챌린지 멤버 수 가져오기
 	public int countChallengeMember(String challenge_id);

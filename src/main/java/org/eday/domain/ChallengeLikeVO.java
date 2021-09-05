@@ -6,4 +6,5 @@ import lombok.Data;
 public class ChallengeLikeVO {
 	private String challenge_id;
 	private String member_id;
+	private String like_toggle;
 }

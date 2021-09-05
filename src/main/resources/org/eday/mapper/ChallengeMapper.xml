@@ -39,12 +39,24 @@
     	where challenge_id = #{challenge_id}
     </select>
     
-    <select id="getChallengeList" resultType="org.eday.domain.ChallengeVO">
+    <!-- <select id="getChallengeList" resultType="org.eday.domain.ChallengeVO">
     	<![CDATA[
     		select ch.challenge_id, ch.owner_id, ch.regdate, ch.startdate, ch.finishdate, ch.detail,
 			s.subject_id, s.subject, s.catergory_id, s.subject_color, ca.category_title 
 			from subject s, categories ca, challenge ch where s.catergory_id = ca.catergory_id and
 			ch.subject_id = s.subject_id and startdate < sysdate;
+    	]]>
+    </select> -->
+    
+    
+    <!-- 이미 진행중인 챌린지 -->
+    <select id="getIngChallengeList" resultType="org.eday.domain.Challenge_ListDTO">
+    	<![CDATA[
+    		select ch.challenge_id, ch.regdate, ch.startdate, ch.finishdate, ch.detail, 
+			ch.owner_id, ch.subject, s.subject_id, s.catergory_id, s.subject_color, 
+			(select count(*) from challenge_member_relation mem group by challenge_id having mem.challenge_id = ch.challenge_id) as challenge_attendant 
+			from challenge ch 
+			inner join subject s on ch.subject_id = s.subject_id where sysdate > startdate
     	]]>
     </select>
    
