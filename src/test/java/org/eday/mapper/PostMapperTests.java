@@ -23,7 +23,7 @@ public class PostMapperTests {
 		
 		PostVO post = new PostVO();
 		
-		post.setDetail("오늘은 텀블러에 음료를 사먹었다.");
+		post.setDetail("test");
 		post.setMember_id("1");
 		
 		mapper.insertPost(post);

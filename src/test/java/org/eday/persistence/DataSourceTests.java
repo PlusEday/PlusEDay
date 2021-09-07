@@ -9,6 +9,7 @@ import javax.sql.DataSource;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.eday.config.RootConfig;
+import org.eday.config.SecurityConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ import lombok.extern.log4j.Log4j;
 
 @Log4j
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {RootConfig.class})
+@ContextConfiguration(classes = {RootConfig.class, SecurityConfig.class})
 public class DataSourceTests {
 	@Setter(onMethod_ = {@Autowired})
 	private DataSource dataSource;
@@ -28,7 +29,7 @@ public class DataSourceTests {
 	@Setter(onMethod_ = {@Autowired})
 	private SqlSessionFactory sqlSessionFactory;
 
-// DataSource를 이용한 Connection 테스트
+// DataSource瑜� �씠�슜�븳 Connection �뀒�뒪�듃
 //	@Test
 //	public void testConnection(){
 //		try(Connection con = dataSource.getConnection()){

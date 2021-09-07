@@ -4,8 +4,27 @@
 
 <mapper namespace="org.eday.mapper.PostMapper">
 
+
 <insert id="insertPost">
+
+<selectKey keyProperty="post_id" order="BEFORE" resultType="string">
+	select post_seq.nextval from post
+</selectKey>
+
 	INSERT INTO Post(post_id, detail, regdate, member_id) VALUES(post_seq.nextval, #{detail}, sysdate, #{member_id})
 </insert>
+
+<insert id="insertPhoto">
+	insert into post_photo(post_id, upload_path, photo_name)
+	values(#{post_id}, #{upload_path}, #{photo_name})
+</insert>
+
+<delete id="deletePhoto">
+	delete from post_photo where post_name = #{post_name}
+</delete>
+
+<select id="findByPostPostId">
+	select * from post_photo where post_id = #{post_id}
+</select>
 
 </mapper>
