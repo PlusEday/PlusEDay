@@ -1,5 +1,8 @@
 package org.eday.mapper;
 
+import java.util.List;
+
+import org.eday.domain.HashtagVO;
 import org.eday.domain.PostVO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,14 +21,21 @@ public class PostMapperTests {
 	@Setter(onMethod_=@Autowired)
 	private PostMapper mapper;
 	
+//	@Test
+//	public void testInsertPost(){
+//		
+//		PostVO post = new PostVO();
+//		
+//		post.setDetail("오늘은 텀블러에 음료를 사먹었다.");
+//		post.setMember_id("1");
+//		
+//		mapper.insertPost(post);
+//	}
+	
 	@Test
-	public void testInsertPost(){
-		
-		PostVO post = new PostVO();
-		
-		post.setDetail("오늘은 텀블러에 음료를 사먹었다.");
-		post.setMember_id("1");
-		
-		mapper.insertPost(post);
+	public void searchTag(){
+		String keyword = "기";
+		List<HashtagVO> list = mapper.searchHashtag(keyword);
+		log.info(list);
 	}
 }

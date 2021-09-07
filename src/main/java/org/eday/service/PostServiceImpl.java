@@ -1,5 +1,8 @@
 package org.eday.service;
 
+import java.util.List;
+
+import org.eday.domain.HashtagVO;
 import org.eday.domain.PostVO;
 import org.eday.mapper.PostMapper;
 import org.springframework.stereotype.Service;
@@ -20,6 +23,12 @@ public class PostServiceImpl implements PostService {
 		log.info("InsertPost.......!!!" + post);
 		
 		return mapper.insertPost(post);
+	}
+
+	@Override
+	public List<HashtagVO> searchHashtag(String keyword) {
+		
+		return mapper.searchHashtag(keyword);
 	}
 
 }

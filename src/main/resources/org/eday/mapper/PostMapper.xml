@@ -8,4 +8,9 @@
 	INSERT INTO Post(post_id, detail, regdate, member_id) VALUES(post_seq.nextval, #{detail}, sysdate, #{member_id})
 </insert>
 
+<select id="searchHashtag" resultType="org.eday.domain.HashtagVO">
+	SELECT * FROM Hashtag
+	WHERE hashtag||keyword like '%'||#{keyword}||'%'
+</select>
+
 </mapper>

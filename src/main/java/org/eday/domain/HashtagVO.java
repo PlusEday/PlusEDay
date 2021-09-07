@@ -7,7 +7,7 @@ public class HashtagVO {
 
 	private String hashtag_id;
 	private String hashtag;
-	private int calculable;
+	private String calculable;
 	private float CO2_cons;
 	private float Energy_cons;
 }

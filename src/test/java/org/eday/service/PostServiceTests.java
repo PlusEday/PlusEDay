@@ -2,6 +2,9 @@ package org.eday.service;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.util.List;
+
+import org.eday.domain.HashtagVO;
 import org.eday.domain.PostVO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,15 +32,23 @@ public class PostServiceTests {
 //		assertNotNull(service);
 //	}
 	
+//	@Test
+//	public void testInsertPost(){
+//		
+//		PostVO post = new PostVO();
+//		post.setDetail("오늘은 자전거를 타고 퇴근했다.");
+//		post.setMember_id("2");
+//		
+//		service.insertPost(post);
+//		
+//		log.info("포스팅 된 게시물:" + post);
+//	}
+	
 	@Test
-	public void testInsertPost(){
+	public void testSearch(){
+		String keyword="전기";
 		
-		PostVO post = new PostVO();
-		post.setDetail("오늘은 자전거를 타고 퇴근했다.");
-		post.setMember_id("2");
-		
-		service.insertPost(post);
-		
-		log.info("포스팅 된 게시물:" + post);
+		List<HashtagVO> list = service.searchHashtag(keyword);
+		log.info(list);
 	}
 }

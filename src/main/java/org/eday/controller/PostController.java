@@ -1,5 +1,8 @@
 package org.eday.controller;
 
+import java.util.List;
+
+import org.eday.domain.HashtagVO;
 import org.eday.domain.PostVO;
 import org.eday.service.PostService;
 import org.springframework.http.HttpStatus;
@@ -32,4 +35,12 @@ public class PostController {
 		return insertCount == 1 ? new ResponseEntity<>("success", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
+	@PostMapping(value="/searchHashtag",
+			consumes = "application/json",
+					produces = { MediaType.APPLICATION_JSON_UTF8_VALUE,
+							MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<List<HashtagVO>> searchHashtag(@RequestBody String keyword) {
+		
+		return new ResponseEntity<List<HashtagVO>>(service.searchHashtag(keyword), HttpStatus.OK);
+	}
 }
