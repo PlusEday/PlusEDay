@@ -27,7 +27,9 @@ public class RootConfig {
 	public DataSource dataSource(){
 		HikariConfig hikariConfig = new HikariConfig();
 		hikariConfig.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+		//hikariConfig.setDriverClassName("com.mysql.jdbc.Driver");
 		hikariConfig.setJdbcUrl("jdbc:oracle:thin:@localhost:1521:XE");
+		//hikariConfig.setJdbcUrl("jdbc:mysql://localhost:3306/pluseday?serverTimeZone=UTC&characterEncoding=UTF-8");
 		hikariConfig.setUsername("pluseday");
 		hikariConfig.setPassword("1234");
 		HikariDataSource dataSource = new HikariDataSource(hikariConfig);
