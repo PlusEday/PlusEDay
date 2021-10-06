@@ -3,6 +3,7 @@ package org.eday.controller.Member;
 import java.io.IOException;
 
 import org.eday.domain.MemberPhotoVO;
+import org.eday.domain.MemberVO;
 import org.eday.service.CustomUserDetailService;
 import org.eday.service.MemberPhotoService;
 import org.eday.service.MemberService;
@@ -49,7 +50,7 @@ public class MypageController {
 
 
     @GetMapping("/getProfile")
-    public ResponseEntity<byte[]> findOne(@RequestBody String member_id) {
+    public ResponseEntity<byte[]> getProfile(@RequestBody String member_id) {
         MemberPhotoVO imageVO = profileService.getProfile(member_id);
  
         HttpHeaders headers = new HttpHeaders();
@@ -58,6 +59,11 @@ public class MypageController {
  
         return new ResponseEntity<byte[]>(imageVO.getData(), headers, HttpStatus.OK);
     }
-	
+    
+//    @GetMapping("/getMemberInfo")
+//    public ResponseEntity<MemberVO> get(@RequestBody String member_id) {
+// 
+//        return new ResponseEntity<byte[]>(imageVO.getData(), headers, HttpStatus.OK);
+//    }
 
 }

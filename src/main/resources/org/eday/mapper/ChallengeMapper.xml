@@ -5,12 +5,9 @@
 <mapper namespace="org.eday.mapper.ChallengeMapper">
 	<!-- 챌린지 생성 -->
     <insert id="create" parameterType="org.eday.domain.ChallengeVO">
-    	<selectKey keyProperty="challenge_id" order="BEFORE" resultType="String">
-    		select challenge_seq.nextval from dual
-    	</selectKey>
-        insert into challenge (challenge_id, regdate, startdate, finishdate, detail, owner_id, subject_id)
-        values (#{challenge_id}, TO_DATE(sysdate, 'YYYY-MM-DD'), TO_DATE(#{startDate}, 'YYYY-MM-DD'),
-        TO_DATE(#{finishDate}, 'YYYY-MM-DD') , #{detail}, #{owner_id}, #{subject_id})
+        insert into challenge (regdate, startdate, finishdate, detail, owner_id, subject_id,title)
+        values ( DATE_FORMAT(NOW(),'%Y-%m-%d'), DATE_FORMAT(#{startDate}, '%Y-%m-%d'),
+        DATE_FORMAT(#{finishDate}, '%Y-%m-%d') , #{detail}, #{owner_id}, #{subject_id},#{title})
     </insert>
     
     <!-- 챌린지 생성과 동시에 멤버 추가 && 챌린지 신청 -->

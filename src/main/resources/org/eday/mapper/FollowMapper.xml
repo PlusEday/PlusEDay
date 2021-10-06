@@ -36,7 +36,7 @@
 	</update>
 		
 	<select id="checkFollow" resultType="String">
-		select nvl(max('y'),'n') as isFollowing
+		select ifnull(max('y'),'n') as isFollowing
 		from follow
 		where following_id= #{following_id}
 			and member_id= #{member_id}

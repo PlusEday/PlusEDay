@@ -4,13 +4,26 @@
 
 <mapper namespace="org.eday.mapper.PostMapper">
 
-<insert id="insertPost">
-	INSERT INTO Post(post_id, detail, regdate, member_id) VALUES(post_seq.nextval, #{detail}, sysdate, #{member_id})
-</insert>
-
-<select id="searchHashtag" resultType="org.eday.domain.HashtagVO">
-	SELECT * FROM Hashtag
-	WHERE hashtag||keyword like '%'||#{keyword}||'%'
-</select>
+	<insert id="insertPost">
+		INSERT INTO Post( detail, regdate, member_id) VALUES( #{detail}, now(), #{member_id})
+	</insert>
+	
+	<insert id="insertPhoto">
+		insert into post_photo(post_id, upload_path, photo_name)
+		values((select max(post_id) from post), #{upload_path}, #{photo_name})
+	</insert>
+	
+	<delete id="deletePhoto">
+		delete from post_photo where post_name = #{post_name}
+	</delete>
+	
+	<select id="findByPostPostId">
+		select * from post_photo where post_id = #{post_id}
+	</select>
+	
+	<select id="searchHashtag" resultType="org.eday.domain.HashtagVO">
+		SELECT * FROM Hashtag
+		WHERE hashtag||keyword like '%'||#{keyword}||'%'
+	</select>
 
 </mapper>

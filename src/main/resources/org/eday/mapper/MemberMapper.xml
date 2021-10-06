@@ -49,8 +49,8 @@
 	</select>
 	
 	<insert id="signUp" parameterType="org.eday.domain.MemberVO">
-		insert into members (member_id, member_name, email, pw, nickname, deleted_flag)
-		values (members_seq.nextval, #{member_name}, #{email}, #{pw}, #{nickname}, #{deleted_flag}) 
+		insert into members (member_name, email, pw, nickname, deleted_flag)
+		values (#{member_name}, #{email}, #{pw}, #{nickname}, #{deleted_flag}) 
 	</insert>
 	
 	
